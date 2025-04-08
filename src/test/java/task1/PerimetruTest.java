@@ -1,16 +1,29 @@
 package task1;
 
 import org.exemple.task1.Perimetru;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PerimetruTest {
 
+    //Instanta de obiect se deefineste mereu la nivel de clasa
+    private Perimetru perimetru;
+
+    /* Hook inainte de fiecare test*/
+    @BeforeEach
+    public void init() {
+        System.out.println("S-a intrat in hook-ul de before each...");
+        //initializarea instantei de obiect se face mereu in hook ul de before
+        perimetru = new Perimetru();
+    }
+
+
     /* Testul functional - de regula se utilizeaza date de test pt un happy flow comun*/
     @Test
     public void testPerimetruHappyFlow() {
-        Perimetru perimetru = new Perimetru();
+
 
         //se poate defini diametrul ca variabila globala a metodei de este
         //astfel incat sa fie pasat la definirea celor 2 variabile de rezultat
@@ -25,7 +38,6 @@ public class PerimetruTest {
     /* Boundery Test -> verifica valori in zona lui 0, empty sau null*/
     @Test
     public void testPerimetruZero() {
-        Perimetru perimetru = new Perimetru();
 
         double rezultatActual = perimetru.calculeazaPerimetru(0.0);
 
@@ -36,17 +48,17 @@ public class PerimetruTest {
     /* Negativ test -> verifica valori in zona numerelor negative*/
     @Test
     public void testPerimetruNumarNegative() {
-        Perimetru perimetru = new Perimetru();
+
 
         double rezultatActual = perimetru.calculeazaPerimetru(2.0);
-        assertEquals(-2.0 * Math.PI, 0.0001);
+        assertEquals(2.0 * Math.PI, rezultatActual, 0.0001);
     }
 
 
     /* Precision Test -> verifica valori fractionare*/
     @Test
     public void testPerimetruPrecizie() {
-        Perimetru perimetru = new Perimetru();
+
 
         double rezultatActual = perimetru.calculeazaPerimetru(1.5);
         assertEquals(4.71239,rezultatActual,0.0001);
@@ -55,7 +67,7 @@ public class PerimetruTest {
     /* Scaling test -> verifica valori intr o plaja de multiplicari*/
     @Test
     public void  testPerimetruScalat(){
-        Perimetru perimetru = new Perimetru();
+
 
         double diametru1 = 5.0;
         double diametru2 = 2 * diametru1;
