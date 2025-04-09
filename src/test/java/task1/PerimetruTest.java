@@ -1,12 +1,13 @@
 package task1;
 
 import org.exemple.task1.Perimetru;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+//utilizam in momentul in care vrem sa avem in clasa de test hook urile BeforAll & AfterAll
+//ne permite sa restrangem modul de rulare la un ciclu la nivelul clasei
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
 public class PerimetruTest {
 
@@ -20,6 +21,8 @@ public class PerimetruTest {
         //initializarea instantei de obiect se face mereu in hook ul de before
         perimetru = new Perimetru();
     }
+
+
 
 
     /* Testul functional - de regula se utilizeaza date de test pt un happy flow comun*/
@@ -60,6 +63,11 @@ public class PerimetruTest {
         assertEquals(2.0 * Math.PI, rezultatActual, 0.0001);
     }
 
+
+    @AfterAll
+    public void cleanup() {
+        System.out.println("s-a intrat in hook-ul de after all...");
+    }
 
     /* Precision Test -> verifica valori fractionare*/
     @Test
