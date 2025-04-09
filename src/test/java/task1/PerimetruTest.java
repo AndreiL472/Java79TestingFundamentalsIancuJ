@@ -14,15 +14,15 @@ public class PerimetruTest {
     //Instanta de obiect se deefineste mereu la nivel de clasa
     private Perimetru perimetru;
 
+
     /* Hook inainte de fiecare test*/
+    //GIVEN test instance - definire si initializare a prerechizitelor necesare rularii unui test
     @BeforeEach
     public void init() {
         System.out.println("S-a intrat in hook-ul de before each...");
         //initializarea instantei de obiect se face mereu in hook ul de before
         perimetru = new Perimetru();
     }
-
-
 
 
     /* Testul functional - de regula se utilizeaza date de test pt un happy flow comun*/
@@ -34,9 +34,12 @@ public class PerimetruTest {
         //se poate defini diametrul ca variabila globala a metodei de este
         //astfel incat sa fie pasat la definirea celor 2 variabile de rezultat
 
+        //WHEN test action - se calculeazam definesc si initializeaza rezultatele de comparat (asteptat vs actual)
+
         double rezultatActual = perimetru.calculeazaPerimetru(2.0);
         double rezultatAsteptat = 2.0 * Math.PI;
 
+        //THEN test result - se aserteaza si verifica din multe puncte de vedere validitatea rezultatelor
         assertEquals(rezultatAsteptat, rezultatActual, 0.0001);
     }
 
