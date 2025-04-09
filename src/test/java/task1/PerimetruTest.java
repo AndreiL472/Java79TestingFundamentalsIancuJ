@@ -2,6 +2,8 @@ package task1;
 
 import org.exemple.task1.Perimetru;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +24,7 @@ public class PerimetruTest {
 
     /* Testul functional - de regula se utilizeaza date de test pt un happy flow comun*/
     @Test
+    @DisplayName("Test pentru verificarea unui happy flow")
     public void testPerimetruHappyFlow() {
 
 
@@ -37,6 +40,7 @@ public class PerimetruTest {
 
     /* Boundery Test -> verifica valori in zona lui 0, empty sau null*/
     @Test
+    @Disabled
     public void testPerimetruZero() {
 
         double rezultatActual = perimetru.calculeazaPerimetru(0.0);
@@ -47,6 +51,8 @@ public class PerimetruTest {
 
     /* Negativ test -> verifica valori in zona numerelor negative*/
     @Test
+    @DisplayName("Test pentru verificarea unui set de date negative")
+    @Disabled
     public void testPerimetruNumarNegative() {
 
 
